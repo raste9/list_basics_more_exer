@@ -1,0 +1,15 @@
+input_string = input()
+integer_list = [int(x) for x in input_string.split(', ')]
+
+zeros = []
+non_zeros = []
+
+for num in integer_list:
+    if num == 0:
+        zeros.append(num)
+    else:
+        non_zeros.append(num)
+
+result = non_zeros + zeros
+
+print(result)
