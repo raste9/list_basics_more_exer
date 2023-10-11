@@ -1,0 +1,34 @@
+input_times = input().split()
+
+
+half = len(input_times) // 2
+
+
+first_half_car = input_times[0:half] #[start : end]
+int_first_half_car = [int(k) for k in first_half_car]
+
+second_car_half = input_times[-1: half: -1] #[start : end: by step]
+int_second_car_half = [int(m) for m in second_car_half]
+
+time_first_car = 0
+time_second_car = 0
+
+for i in int_first_half_car:
+    time_first_car += i
+    if i == 0:
+        time_first_car *= 0.80
+
+for n in int_second_car_half:
+    time_second_car += n
+    if n == 0:
+        time_second_car *= 0.80
+
+
+if time_first_car < time_second_car:
+    winner = 'left'
+    total_time = time_first_car
+    print(f'The winner is {winner} with total time: {time_first_car:.1f}')
+else:
+    winner = 'right'
+    total_time = time_second_car
+    print(f'The winner is {winner} with total time: {time_second_car:.1f}')
