@@ -1,8 +1,6 @@
 input_times = input().split()
 
-
 half = len(input_times) // 2
-
 
 first_half_car = input_times[0:half] #[start : end]
 int_first_half_car = [int(k) for k in first_half_car]
@@ -32,3 +30,42 @@ else:
     winner = 'right'
     total_time = time_second_car
     print(f'The winner is {winner} with total time: {time_second_car:.1f}')
+----------------------------------------------------------------------
+
+# Input: Sequence of numbers representing race times
+race_times = list(map(int, input().split()))
+
+# Find the middle index of the sequence
+middle_index = len(race_times) // 2
+
+# Initialize total times for both racers
+left_total_time = 0
+right_total_time = 0
+
+# Calculate total time for the left racer
+for i in range(middle_index):
+    if race_times[i] == 0:
+        left_total_time += race_times[i] * 0.8
+    else:
+        left_total_time += race_times[i]
+
+# Calculate total time for the right racer
+for i in range(middle_index + 1, len(race_times)):
+    if race_times[i] == 0:
+        right_total_time += race_times[i] * 0.8
+    else:
+        right_total_time += race_times[i]
+
+# Add the time for the racer at the finish line (middle index)
+left_total_time += race_times[middle_index]
+right_total_time += race_times[middle_index]
+
+# Determine the winner and print the result
+if left_total_time < right_total_time:
+    winner = "left"
+    total_time = round(left_total_time, 1)
+else:
+    winner = "right"
+    total_time = round(right_total_time, 1)
+
+print(f"The winner is {winner} with total time: {total_time}")
